@@ -1,0 +1,4 @@
+2024-03-21T14:21:55.380+01:00  INFO [grafanaLoki,,] 25960 --- [grafanaLoki] [Test worker] c.e.l.d.g.GrafanaLokiApplicationTests    : Starting GrafanaLokiApplicationTests using Java 21.0.1 with PID 25960 (started by ashbha in C:\devel\gitRepos\learn\grafanaLoki)
+2024-03-21T14:21:55.381+01:00  INFO [grafanaLoki,,] 25960 --- [grafanaLoki] [Test worker] c.e.l.d.g.GrafanaLokiApplicationTests    : No active profile set, falling back to 1 default profile: "default"
+2024-03-21T14:21:56.587+01:00  INFO [grafanaLoki,,] 25960 --- [grafanaLoki] [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-03-21T14:21:56.662+01:00  INFO [grafanaLoki,,] 25960 --- [grafanaLoki] [Test worker] c.e.l.d.g.GrafanaLokiApplicationTests    : Started GrafanaLokiApplicationTests in 1.565 seconds (process running for 2.55)

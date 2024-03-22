@@ -1,0 +1,16 @@
+apiVersion: 1
+datasources:
+  - name: Loki
+    type: loki
+    access: proxy
+    orgId: 1
+    url: http://loki:3100
+    basicAuth: false
+    isDefault: true
+    version: 1
+    editable: false
+
+
+#  The data source you defined instructs Grafana to connect with Loki Datasource using
+#  http://loki:3100 and use it as the default data source.
+#  We can also add Loki data source manually after the Grafana container is up, if it does not work.

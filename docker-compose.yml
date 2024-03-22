@@ -1,0 +1,59 @@
+version: '3'
+services:
+  #Option 3 OTEL Collectors
+  collector:
+    container_name: collector
+    image: otel/opentelemetry-collector-contrib:latest
+    extra_hosts: [ 'host.docker.internal:host-gateway' ]
+    volumes:
+      - ./otel/otel-config.yml:/etc/otel/otel-config.yml
+      #      - /var/lib/docker/containers:/var/lib/docker/containers:ro ##ideally this should work but some docker permissions issues
+      - ./logs/locallokilogs.log:/etc/locallokilogs.log
+    command: [ "--config=/etc/otel/otel-config.yml" ]
+    expose:
+      - "4317"
+      - "4318"
+    ports:
+      - "4317:4317"   # OTLP gRPC receiver
+      - "4318:4318"   # OTLP HTTP receiver
+  loki:
+    container_name: loki
+    image: grafana/loki:latest
+    volumes:
+      - ./loki/local-config.yml:/etc/loki/local-config.yml
+    command: [ "-config.file=/etc/loki/local-config.yml" ]
+    ports:
+      - "3100:3100"
+  #  promtail:
+  #    container_name: promtail
+  #    image: grafana/promtail:latest
+  #    extra_hosts: [ 'host.docker.internal:host-gateway' ]
+  #    volumes:
+  #      - ./promtail/config.yml:/etc/promtail/config.yml
+  #      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+  #      - /var/run/docker.sock:/var/run/docker.sock
+  #    command: [ "-config.file=/etc/promtail/config.yml" ]
+  #    depends_on:
+  #      - loki
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    extra_hosts: [ 'host.docker.internal:host-gateway' ]
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/provisioning/datasources.yml:/etc/grafana/provisioning/datasources.yml:ro
+    depends_on:
+      - loki
+      - collector
+  app:
+    build: ./
+    #    labels: ##enable when scrapping logs with Promtail agent, Option2
+    #      logging: "promtail"
+    #      logging_jobname: "containerlokilogs"
+    expose:
+      - "8484"
+    ports:
+      - "8484:8484"
+
+# Grafana: http://localhost:3000/
