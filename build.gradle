@@ -25,7 +25,7 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    //LOKI, shipping logs to Loki
+    //LOKI, shipping logs to Loki via logback appender
     implementation 'com.github.loki4j:loki-logback-appender:1.5.1'
 }
 

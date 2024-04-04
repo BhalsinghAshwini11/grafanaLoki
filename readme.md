@@ -1,7 +1,7 @@
 # Getting Started WIKI 
 Please note this POC is gradle project and latest Java and spring boot, created via https://start.spring.io/!!
 There are many ways you can configure your app to expose logs to monitoring tools(for searching, monitoring, and analyzing your logs)
-see Excalidraw in the project linked for tried Options in this project. 
+see Excalidraw in the project linked for tried Options in this project. TODO
 
 # Disclaimer
 The POC is purely for learning/exploration purpose locally and can have bugs or misconfigurations for diff env or machines. 
@@ -17,7 +17,8 @@ loki-logback-appender (Java) https://github.com/loki4j/loki-logback-appender
 ## Option 2, Promtail client
 Promtail is the client of choice when we are running Kubernetes, as we can configure it to automatically scrape logs from pods running on the same node that Promtail runs on.
 * This option is very much feels like Prometheus with scrapping job but for Logs.
-* Take a look at docker compose file and ../promtail/config.yml file. It will give you an glimse how it will work. 
+* Purely file based, hence can also be suitable for deployments like baremetal
+* Take a look at docker compose file and ../promtail/config.yml file. It will give you the glimse how it will work. 
 * Again, in this POC I am scrapping it from my docker container to get the idea, also needed to get deep if we wanted to play with labelling and stuff.
 
 ## Option 3, OTEL Collector/Exporter 

@@ -1,4 +1,169 @@
-2024-03-21T14:21:55.380+01:00  INFO [grafanaLoki,,] 25960 --- [grafanaLoki] [Test worker] c.e.l.d.g.GrafanaLokiApplicationTests    : Starting GrafanaLokiApplicationTests using Java 21.0.1 with PID 25960 (started by ashbha in C:\devel\gitRepos\learn\grafanaLoki)
-2024-03-21T14:21:55.381+01:00  INFO [grafanaLoki,,] 25960 --- [grafanaLoki] [Test worker] c.e.l.d.g.GrafanaLokiApplicationTests    : No active profile set, falling back to 1 default profile: "default"
-2024-03-21T14:21:56.587+01:00  INFO [grafanaLoki,,] 25960 --- [grafanaLoki] [Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
-2024-03-21T14:21:56.662+01:00  INFO [grafanaLoki,,] 25960 --- [grafanaLoki] [Test worker] c.e.l.d.g.GrafanaLokiApplicationTests    : Started GrafanaLokiApplicationTests in 1.565 seconds (process running for 2.55)
+2024-04-02T15:12:51.745+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] c.e.l.d.g.GrafanaLokiApplication         : Starting GrafanaLokiApplication using Java 21.0.1 with PID 7080 (C:\devel\gitRepos\learn\grafanaLoki\build\classes\java\main started by ashbha in C:\devel\gitRepos\learn\grafanaLoki)
+2024-04-02T15:12:51.753+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] c.e.l.d.g.GrafanaLokiApplication         : No active profile set, falling back to 1 default profile: "default"
+2024-04-02T15:12:52.621+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8484 (http)
+2024-04-02T15:12:52.631+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-02T15:12:52.632+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-02T15:12:52.671+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-02T15:12:52.671+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 882 ms
+2024-04-02T15:12:53.075+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path '/actuator'
+2024-04-02T15:12:53.111+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8484 (http) with context path ''
+2024-04-02T15:12:53.119+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [main] c.e.l.d.g.GrafanaLokiApplication         : Started GrafanaLokiApplication in 1.773 seconds (process running for 2.32)
+2024-04-02T15:12:53.642+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [RMI TCP Connection(3)-10.88.16.12] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-02T15:12:53.642+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [RMI TCP Connection(3)-10.88.16.12] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-02T15:12:53.643+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [RMI TCP Connection(3)-10.88.16.12] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-04-02T15:15:51.448+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-8] c.e.l.d.g.controller.BalanceController   : Balance request for customer: 123
+2024-04-02T15:15:51.451+02:00 ERROR [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.Exception: Customer do not exist] with root cause
+
+java.lang.Exception: Customer do not exist
+	at com.example.logs.demo.grafanaLoki.service.WalletService.getBalance(WalletService.java:33)
+	at com.example.logs.demo.grafanaLoki.controller.BalanceController.getBalance(BalanceController.java:44)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:259)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:192)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:920)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-04-02T15:15:55.821+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-9] c.e.l.d.g.controller.BalanceController   : Creating new customer=123 wallet
+2024-04-02T15:15:55.821+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-9] c.e.l.d.g.service.WalletService          : Creating customer
+2024-04-02T15:15:55.822+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-9] c.e.l.d.g.service.WalletService          : Created new wallet successfully for customerId=123
+2024-04-02T15:15:58.692+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-1] c.e.l.d.g.controller.BalanceController   : Balance request for customer: 123
+2024-04-02T15:15:58.693+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-1] c.e.l.d.g.service.WalletService          : Balance of customer=123, balance=0
+2024-04-02T15:16:04.479+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-3] c.e.l.d.g.controller.BalanceController   : Creating new customer=123 wallet
+2024-04-02T15:16:04.479+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-3] c.e.l.d.g.service.WalletService          : Creating customer
+2024-04-02T15:16:04.479+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-3] c.e.l.d.g.service.WalletService          : Created new wallet successfully for customerId=123
+2024-04-02T15:16:08.329+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-5] c.e.l.d.g.controller.BalanceController   : Creating new customer=123 wallet
+2024-04-02T15:16:08.329+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-5] c.e.l.d.g.service.WalletService          : Creating customer
+2024-04-02T15:16:08.329+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-5] c.e.l.d.g.service.WalletService          : Created new wallet successfully for customerId=123
+2024-04-02T15:16:12.178+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-6] c.e.l.d.g.controller.BalanceController   : Creating new customer=123567 wallet
+2024-04-02T15:16:12.178+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-6] c.e.l.d.g.service.WalletService          : Creating customer
+2024-04-02T15:16:12.178+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-6] c.e.l.d.g.service.WalletService          : Created new wallet successfully for customerId=123567
+2024-04-02T15:16:17.659+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-9] c.e.l.d.g.controller.BalanceController   : Balance request for customer: 123567
+2024-04-02T15:16:17.659+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-9] c.e.l.d.g.service.WalletService          : Balance of customer=123567, balance=0
+2024-04-02T15:16:25.775+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-1] c.e.l.d.g.controller.BalanceController   : Balance request for customer: 1235677
+2024-04-02T15:16:25.776+02:00 ERROR [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.util.NoSuchElementException: No value present] with root cause
+
+java.util.NoSuchElementException: No value present
+	at java.base/java.util.Optional.orElseThrow(Optional.java:377)
+	at com.example.logs.demo.grafanaLoki.service.WalletService.findCustomer(WalletService.java:45)
+	at com.example.logs.demo.grafanaLoki.service.WalletService.getBalance(WalletService.java:35)
+	at com.example.logs.demo.grafanaLoki.controller.BalanceController.getBalance(BalanceController.java:44)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:259)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:192)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:920)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:830)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:564)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:205)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:109)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:174)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:149)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:482)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:391)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:896)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1744)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+
+2024-04-02T15:16:28.646+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-2] c.e.l.d.g.controller.BalanceController   : Balance request for customer: 123567
+2024-04-02T15:16:28.647+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-2] c.e.l.d.g.service.WalletService          : Balance of customer=123567, balance=0
+2024-04-02T15:16:40.830+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-4] c.e.l.d.g.controller.BalanceController   : Withdraw req for customer=123, amount=10
+2024-04-02T15:16:40.830+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-4] c.e.l.d.g.service.WalletService          : Fake Withdrawing amount=10 for customerId=123
+2024-04-02T15:16:54.185+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-7] c.e.l.d.g.controller.BalanceController   : Deposit req for customer=123, amount=10
+2024-04-02T15:16:54.186+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-7] c.e.l.d.g.service.WalletService          : Fake Depositing amount=10 for customerId=123
+2024-04-02T15:16:55.911+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-8] c.e.l.d.g.controller.BalanceController   : Deposit req for customer=123, amount=10
+2024-04-02T15:16:55.912+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-8] c.e.l.d.g.service.WalletService          : Fake Depositing amount=10 for customerId=123
+2024-04-02T15:17:03.424+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-10] c.e.l.d.g.controller.BalanceController   : Deposit req for customer=123, amount=0
+2024-04-02T15:17:03.424+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-10] c.e.l.d.g.service.WalletService          : Fake Depositing amount=0 for customerId=123
+2024-04-02T15:17:07.734+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-2] c.e.l.d.g.controller.BalanceController   : Deposit req for customer=123, amount=-1
+2024-04-02T15:17:07.734+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-2] c.e.l.d.g.service.WalletService          : Fake Depositing amount=-1 for customerId=123
+2024-04-02T15:17:16.137+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-4] c.e.l.d.g.controller.BalanceController   : Deposit req for customer=11, amount=1
+2024-04-02T15:17:16.137+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-4] c.e.l.d.g.service.WalletService          : Fake Depositing amount=1 for customerId=11
+2024-04-02T15:25:44.317+02:00  WARN [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-7] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "kk"]
+2024-04-02T15:25:48.581+02:00  WARN [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'java.lang.Long'; For input string: "u8"]
+2024-04-02T15:26:02.024+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-8] c.e.l.d.g.controller.BalanceController   : Deposit req for customer=11, amount=1
+2024-04-02T15:26:02.025+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-8] c.e.l.d.g.service.WalletService          : Fake Depositing amount=1 for customerId=11
+2024-04-02T15:26:13.567+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-10] c.e.l.d.g.controller.BalanceController   : Balance request for customer: 123567
+2024-04-02T15:26:13.567+02:00  INFO [grafanaLoki,,] 7080 --- [grafanaLoki] [http-nio-8484-exec-10] c.e.l.d.g.service.WalletService          : Balance of customer=123567, balance=0
