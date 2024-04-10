@@ -24,17 +24,17 @@ services:
     command: [ "-config.file=/etc/loki/local-config.yml" ]
     ports:
       - "3100:3100"
-  promtail:
-    container_name: promtail
-    image: grafana/promtail:latest
-    extra_hosts: [ 'host.docker.internal:host-gateway' ]
-    volumes:
-      - ./promtail/config.yml:/etc/promtail/config.yml
-      - /var/lib/docker/containers:/var/lib/docker/containers:ro
-      - /var/run/docker.sock:/var/run/docker.sock
-    command: [ "-config.file=/etc/promtail/config.yml" ]
-    depends_on:
-      - loki
+#  promtail:
+#    container_name: promtail
+#    image: grafana/promtail:latest
+#    extra_hosts: [ 'host.docker.internal:host-gateway' ]
+#    volumes:
+#      - ./promtail/config.yml:/etc/promtail/config.yml
+#      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+#      - /var/run/docker.sock:/var/run/docker.sock
+#    command: [ "-config.file=/etc/promtail/config.yml" ]
+#    depends_on:
+#      - loki
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
@@ -42,15 +42,15 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./grafana/provisioning/datasources.yml:/etc/grafana/provisioning/datasources.yml:ro
+      - ./grafana/provisioning/datasources.yaml:/etc/grafana/provisioning/datasources.yaml
     depends_on:
       - loki
       - collector
   app:
     build: ./
-    labels: ##enable when scrapping logs with Promtail agent, Option2
-      logging: "promtail"
-      logging_jobname: "containerlokilogs"
+#    labels: ##enable when scrapping logs with Promtail agent, Option2
+#      logging: "promtail"
+#      logging_jobname: "containerlokilogs"
     expose:
       - "8484"
     ports:

@@ -5,8 +5,8 @@ receivers:
       # - /var/lib/docker/containers/*/*log # for local docker desktop but needed some permissions fixes
       - /etc/locallokilogs.log # Add logs manually, bad but difficult to fix the permission issues.
     # exclude:     # can be useful for excluding self logs from otel-collector itself for any reason
-    #multiline: # can be useful for handling multilines log lines like, exceptions/error TODO FIXME
-     # line_start_pattern: '^Exception:'
+    multiline: # Needed to handling multilines log lines messages exceptions/error
+      line_start_pattern: '^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z )'
     start_at: beginning
     include_file_path: false
     include_file_name: false
@@ -14,7 +14,7 @@ receivers:
       enabled: false
     operators:
       - type: regex_parser # this is highly depends on type of log format we are receiving from container/k8s/application
-        regex: '^(?P<time>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{3}.*) (?P<sev>[A-Z]*) (?P<msg>.*)$'
+        regex: '^(?P<time>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z) (?P<sev>[A-Z]*) (?P<msg>.*)$'
         timestamp:
           parse_from: attributes.time
           layout: '%Y-%m-%dT%H:%M:%S.%LZ'
