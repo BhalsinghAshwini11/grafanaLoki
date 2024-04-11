@@ -1,7 +1,6 @@
 # Getting Started WIKI 
 Please note this POC is gradle project and latest Java and spring boot, created via https://start.spring.io/!!
 There are many ways you can configure your app to expose logs to monitoring tools(for searching, monitoring, and analyzing your logs)
-see Excalidraw in the project linked for tried Options in this project. TODO
 
 # Disclaimer
 The POC is purely for learning/exploration purpose locally and can have bugs or misconfigurations for diff env or machines. 
@@ -29,8 +28,6 @@ This option is exploring the OTEL ecosystem capabilities directly for learning p
 * Due to some permission issues with windows docker desktop, I have manually copied logs from loki app docker container to /logs/locallokilogs.log.
 * Having manual log dump not good but server the purpose of learning from **OTEL filelog receiver** and exporter.
 * With this option you can play with different log formats and play with it.
-* TODO fix multi line logs, do not work as expected
-* TODO, play around with bigger logs size/ error stacktrace etc. 
 
 ## Option 4, Grafana Agent (NOT tried yet)
 Recommended from Grafana community, they have implemented a wrapper client named which can collect and export data to OTEL/PROMETHEUS world
