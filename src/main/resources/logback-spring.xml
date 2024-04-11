@@ -11,45 +11,47 @@
         </encoder>
     </appender>
 
-    <!--option 1 via logback -->
-    <!--    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">-->
-    <!--        &lt;!&ndash; (1) Our instance of Loki is available here&ndash;&gt;-->
-    <!--        <http>-->
-    <!--            <url>http://loki:3100/loki/api/v1/push</url>-->
-    <!--        </http>-->
-    <!--        <format>-->
-    <!--            &lt;!&ndash; (2) Loki does not index the contents of the logs – but only metadata labels.-->
-    <!--            There are some static labels like the app name, log level, or hostname.-->
-    <!--            We can set them in format.label field, as following-->
-    <!--            &ndash;&gt;-->
-    <!--            <label>-->
-    <!--                <pattern>app=${appName},host=${HOSTNAME},traceID=%X{traceId:-NONE},requestId=%X{X_Request_ID:-NONE},level=%level</pattern>-->
-    <!--                &lt;!&ndash; (3) We can set some dynamic labels generated from application by enabling the Logback markers feature,-->
-    <!--                 but do not recommend it unless very special case. rely on MDC instead.  Do careful consideration with dynamic labels from app can have performance impact-->
-    <!--                <readMarkers>true</readMarkers> &ndash;&gt;-->
-    <!--            </label>-->
-    <!--            <message>-->
-    <!--                &lt;!&ndash; (4.1)  Last we are setting the log format pattern&ndash;&gt;-->
-    <!--                <pattern>${FILE_LOG_PATTERN}</pattern>-->
-    <!--                &lt;!&ndash; (4.2)  We can also set the log format pattern, using JSON notation as following,-->
-    <!--                to simplify, potential transformations with LogQL (Loki query language)-->
-    <!--                I do not like it, different from SPLUNK&ndash;&gt;-->
-    <!--&lt;!&ndash;                <pattern>&ndash;&gt;-->
-    <!--&lt;!&ndash;                    {&ndash;&gt;-->
-    <!--&lt;!&ndash;                    "level":"%level",&ndash;&gt;-->
-    <!--&lt;!&ndash;                    "class":"%logger{36}",&ndash;&gt;-->
-    <!--&lt;!&ndash;                    "thread":"%thread",&ndash;&gt;-->
-    <!--&lt;!&ndash;                    "message": "%message",&ndash;&gt;-->
-    <!--&lt;!&ndash;                    "requestId": "%X{X-Request-ID}"&ndash;&gt;-->
-    <!--&lt;!&ndash;                    }&ndash;&gt;-->
-    <!--&lt;!&ndash;                </pattern>&ndash;&gt;-->
-    <!--            </message>-->
-    <!--            <sortByTime>true</sortByTime>-->
-    <!--        </format>-->
-    <!--    </appender>-->
+    <!--    option 1 via logback -->
+    <appender name="LOKI" class="com.github.loki4j.logback.Loki4jAppender">
+        <!-- (1) Our instance of Loki is available here-->
+        <http>
+            <url>http://loki:3100/loki/api/v1/push</url>
+        </http>
+        <format>
+            <!-- (2) Loki does not index the contents of the logs – but only metadata labels.
+            There are some static labels like the app name, log level, or hostname.
+            We can set them in format.label field, as following
+            -->
+            <label>
+                <pattern>
+                    app=${appName},host=${HOSTNAME},traceID=%X{traceId:-NONE},requestId=%X{X_Request_ID:-NONE},level=%level
+                </pattern>
+                <!-- (3) We can set some dynamic labels generated from application by enabling the Logback markers feature,
+                 but do not recommend it unless very special case. rely on MDC instead.  Do careful consideration with dynamic labels from app can have performance impact
+                <readMarkers>true</readMarkers> -->
+            </label>
+            <message>
+                <!-- (4.1)  Last we are setting the log format pattern-->
+                <pattern> %d{HH:mm:ss.SSS} %-5level %logger{36} %X{X-Request-ID} - %msg%n</pattern>
+                <!-- (4.2)  We can also set the log format pattern, using JSON notation as following,
+                to simplify, potential transformations with LogQL (Loki query language)
+                I do not like it, different from SPLUNK-->
+                <!--                <pattern>-->
+                <!--                    {-->
+                <!--                    "level":"%level",-->
+                <!--                    "class":"%logger{36}",-->
+                <!--                    "thread":"%thread",-->
+                <!--                    "message": "%message",-->
+                <!--                    "requestId": "%X{X-Request-ID}"-->
+                <!--                    }-->
+                <!--                </pattern>-->
+            </message>
+            <sortByTime>true</sortByTime>
+        </format>
+    </appender>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
-        <!--        <appender-ref ref="LOKI"/>-->
+        <appender-ref ref="LOKI"/>
     </root>
 </configuration>
